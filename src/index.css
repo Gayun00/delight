@@ -109,3 +109,11 @@
   font-weight: 900;
   font-style: italic;
 }
+
+body {
+  font-family: "Poppins";
+}
+
+p {
+  padding-top: 1px;
+}

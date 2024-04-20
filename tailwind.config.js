@@ -4,8 +4,8 @@ export default {
   theme: {
     extend: {
       borderRadius: {
-        md: "8px",
         lg: "20px",
+        md: "8px",
       },
       fontSize: {
         "2xl": "24px",
