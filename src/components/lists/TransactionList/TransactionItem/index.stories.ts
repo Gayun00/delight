@@ -18,3 +18,12 @@ export const Primary: Story = {
     type: "transfer",
   },
 };
+
+export const Secondary: Story = {
+  args: {
+    amount: "-1380.95",
+    name: "Prince Jules Friesen",
+    timestamp: "2023-07-01T00:00:00Z",
+    type: "transfer",
+  },
+};
