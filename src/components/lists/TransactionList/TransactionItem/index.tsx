@@ -1,4 +1,4 @@
-import { addDollarSign } from "@/utils/convertFormat";
+import { addDollarSign, formatDateTime } from "@/utils/convertFormat";
 // TODO: api 연결 후 구조 리팩토링 및 하위 컴포넌트 분리
 
 interface Props {
@@ -21,13 +21,12 @@ const TransactionItem = ({ amount, type, name, timestamp }: Props) => {
             {type}
           </p>
         </div>
-        <div>
+        <div className="flex flex-col items-end">
           <p className="text-lg font-extraBold leading-lg text-purple-primary">
             {addDollarSign(amount)}
           </p>
-          {/* TODO: 시간 포맷 변환 */}
           <p className="text-md font-medium leading-sm text-gray-primary">
-            {timestamp}
+            {formatDateTime(timestamp)}
           </p>
         </div>
       </div>
