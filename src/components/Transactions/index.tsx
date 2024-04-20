@@ -1,10 +1,10 @@
 import React from "react";
 import * as Tabs from "@radix-ui/react-tabs";
-import Button from "@/components/Button";
+import Button from "@/components/buttons/Button";
 import Title from "../titles/Title";
 import BEll from "@/assets/bell.svg?react";
 
-export const TabButton = React.forwardRef<
+const TabButton = React.forwardRef<
   React.ElementRef<typeof Tabs.Trigger>,
   React.ComponentPropsWithoutRef<typeof Tabs.Trigger>
 >((props) => {
@@ -25,9 +25,7 @@ const Transactions = () => {
         <BEll />
       </div>
       <Tabs.Root defaultValue="tab1">
-        <Tabs.List
-          aria-label="Manage your account"
-          className="flex justify-between items-center">
+        <Tabs.List className="flex justify-between items-center">
           <div className="flex w-fit bg-gray-background rounded-lg">
             <Tabs.Trigger value="tab1" asChild>
               <TabButton value="tab1">Week</TabButton>
@@ -40,10 +38,10 @@ const Transactions = () => {
             MM DD.YYYY
           </p>
         </Tabs.List>
-        <Tabs.Content className="TabsContent" value="tab1">
+        <Tabs.Content value="tab1">
           <p>week content</p>
         </Tabs.Content>
-        <Tabs.Content className="TabsContent" value="tab2">
+        <Tabs.Content value="tab2">
           <p>month content</p>
         </Tabs.Content>
       </Tabs.Root>

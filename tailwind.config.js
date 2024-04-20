@@ -37,6 +37,7 @@ export default {
           secondary: "#363062",
           third: "#BDBDBD",
           background: "#F5F5F5",
+          foreground: "#E2E2E2",
         },
         green: {
           primary: "#5BDAA4",
