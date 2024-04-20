@@ -1,5 +1,5 @@
 import { expect, it, describe } from "vitest";
-import { addDollarSign, formatDateTime } from ".";
+import { addDollarSign, capitalizeFirstLetter, formatDateTime } from ".";
 
 describe("addDollarSign 테스트", () => {
   it("-1380.95를 -$1380.95로 변환한다", () => {
@@ -18,5 +18,11 @@ describe("formatDateTime 테스트", () => {
 
   it("2023-07-01T02:42:00Z은 11.42 AM으로 변환된다", () => {
     expect(formatDateTime("2023-07-01T02:42:00Z")).toBe("11.42 AM");
+  });
+});
+
+describe("capitalizeFirstLetter 테스트", () => {
+  it("transfer를 Transfer로 변환", () => {
+    expect(capitalizeFirstLetter("transfer")).toBe("Transfer");
   });
 });

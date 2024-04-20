@@ -39,3 +39,10 @@ describe("시간 변환 UI 테스트", () => {
     expect(getByText2("9.00 AM")).toBeDefined();
   });
 });
+
+describe("type UI 테스트", () => {
+  it("timeStamp를 시간.분 오전/오후 포맷으로 변환해 표시한다", () => {
+    const { getByText } = customRender(<TransactionItem {...data} />);
+    expect(getByText("Transfer")).toBeDefined();
+  });
+});
