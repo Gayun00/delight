@@ -1,9 +1,8 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import dayjs from "dayjs";
-import * as Tabs from "@radix-ui/react-tabs";
-import Button from "@/components/buttons/Button";
 import Title from "@/components/titles/Title";
 import AlertButton from "@/components/buttons/AlertButton";
+import Button from "@/components/buttons/Button";
 import { useHistoryQuery } from "@/queries";
 import { DATE_RANGE } from "@/constants";
 import {
@@ -12,7 +11,7 @@ import {
   generateDateArray,
   filterAndSumByDateRange,
 } from "@/utils/convertFormat";
-// import AreaChart from "@/components/charts/AreaChart";
+import AreaChart from "@/components/charts/AreaChart";
 
 const list = [
   {
@@ -33,7 +32,9 @@ const Transactions = () => {
     if (type === DATE_RANGE.WEEK) {
       endDate = calculateDatesAWeekAgo(today);
     }
-    endDate = calculateDatesAMonthAgo(today);
+    if (type === DATE_RANGE.MONTH) {
+      endDate = calculateDatesAMonthAgo(today);
+    }
 
     return endDate;
   };
@@ -50,7 +51,6 @@ const Transactions = () => {
     data?.data || [],
     datesArray
   );
-  console.log(datesArray, expense, income);
   return (
     <div className="flex flex-col space-y-[20px]">
       <div className="flex justify-between items-center">
@@ -74,12 +74,11 @@ const Transactions = () => {
             MM DD.YYYY
           </p>
         </div>
-        {/* TODO: 대시보드 추가 */}
-        {/* <AreaChart
+        <AreaChart
           series1Data={expense}
           series2Data={income}
-          dates={handleDates(type)}
-        /> */}
+          dates={datesArray}
+        />
       </div>
     </div>
   );

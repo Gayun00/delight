@@ -157,6 +157,12 @@ describe("filterDatesInDateRange 테스트", () => {
         {
           amount: "4573.84",
           name: "Mr. Chester Kshlerin",
+          timestamp: "2023-06-30T00:14:00Z",
+          type: "transfer",
+        },
+        {
+          amount: "4573.84",
+          name: "Mr. Chester Kshlerin",
           timestamp: "2023-07-01T00:14:00Z",
           type: "transfer",
         },
