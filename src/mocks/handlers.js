@@ -6,6 +6,9 @@ export const handlers = [
   http.get(`${URL_CONSTANTS.API_SERVER}/history`, ({ request }) => {
     const url = new URL(request.url);
     const type = url.searchParams.get("type");
+    const offset = url.searchParams.get("offset");
+    const limit = url.searchParams.get("limit");
+
     let data = mockData.sort(
       (a, b) => new Date(b.timestamp) - new Date(a.timestamp)
     );
@@ -17,8 +20,11 @@ export const handlers = [
       data = mockData.filter((data) => !data.amount.includes("-"));
     }
 
-    console.log(data.slice(0, 10));
-
-    return HttpResponse.json({ data: data.slice(0, 10) });
+    return HttpResponse.json({ data: data.slice(offset, limit) });
   }),
 ];
+
+/**
+ * limit, offset값을 정하고
+ *
+ */

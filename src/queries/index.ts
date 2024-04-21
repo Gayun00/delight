@@ -6,9 +6,17 @@ const queryKeys = {
   list: (type: string) => [...queryKeys.all, type] as const,
 };
 
-export const useHistoryQuery = (type: string) => {
+export const useHistoryQuery = ({
+  type,
+  offset,
+  limit,
+}: {
+  type: string;
+  offset: number;
+  limit: number;
+}) => {
   return useQuery({
     queryKey: queryKeys.list(type),
-    queryFn: () => getHistory(type),
+    queryFn: () => getHistory({ type, offset, limit }),
   });
 };
