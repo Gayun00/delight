@@ -6,7 +6,7 @@ interface Props {
 }
 
 const TransactionList = ({ children }: Props) => {
-  return <div className="flex flex-col space-y-[20px]">{children}</div>;
+  return <div className="flex flex-col space-y-[20px] h-full">{children}</div>;
 };
 
 TransactionList.Item = TransactionItem;

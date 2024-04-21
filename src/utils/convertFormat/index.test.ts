@@ -1,5 +1,26 @@
 import { expect, it, describe } from "vitest";
-import { addDollarSign, capitalizeFirstLetter, formatDateTime } from ".";
+import {
+  addDollarSign,
+  capitalizeFirstLetter,
+  formatDateTime,
+  filterExpenseType,
+  sortByTimestamp,
+} from ".";
+
+const mockData = [
+  {
+    amount: "4573.84",
+    name: "Mr. Chester Kshlerin",
+    timestamp: "2023-07-01T00:14:00Z",
+    type: "transfer",
+  },
+  {
+    amount: "-750.78",
+    name: "Prince Danial Dickens",
+    timestamp: "2023-07-01T00:12:00Z",
+    type: "transfer",
+  },
+];
 
 describe("addDollarSign 테스트", () => {
   it("-1380.95를 -$1380.95로 변환한다", () => {
@@ -24,5 +45,38 @@ describe("formatDateTime 테스트", () => {
 describe("capitalizeFirstLetter 테스트", () => {
   it("transfer를 Transfer로 변환", () => {
     expect(capitalizeFirstLetter("transfer")).toBe("Transfer");
+  });
+});
+
+describe("filterExpenseType 테스트", () => {
+  it("음수인 데이터만 필터링해 반환", () => {
+    expect(filterExpenseType(mockData)).toEqual([
+      {
+        amount: "-750.78",
+        name: "Prince Danial Dickens",
+        timestamp: "2023-07-01T00:12:00Z",
+        type: "transfer",
+      },
+    ]);
+  });
+});
+
+describe("sortByTimeStamp 테스트", () => {
+  it("타임스탬프 순으로 최근 순으로 정렬", () => {
+    expect(sortByTimestamp(mockData)).toEqual([
+      {
+        amount: "4573.84",
+        name: "Mr. Chester Kshlerin",
+        timestamp: "2023-07-01T00:14:00Z",
+        type: "transfer",
+      },
+      {
+        amount: "-750.78",
+        name: "Prince Danial Dickens",
+        timestamp: "2023-07-01T00:12:00Z",
+        type: "transfer",
+      },
+  
+    ]);
   });
 });
