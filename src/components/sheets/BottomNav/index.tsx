@@ -23,13 +23,21 @@ const list = [
   },
 ];
 
-const BottomNav = () => {
-  // TODO: 페이지 라우팅 추가
+interface Props {
+  onSelect: () => void;
+  selectedMenu: string;
+}
+
+const BottomNav = ({ onSelect, selectedMenu }: Props) => {
   return (
     <div className="w-full h-[67px]">
       <div className="flex px-[28px]">
         {list.map((item) => (
-          <BottomNavButton Icon={item.Icon} isSelected={true} />
+          <BottomNavButton
+            Icon={item.Icon}
+            isSelected={selectedMenu === item.name}
+            onClick={onSelect}
+          />
         ))}
       </div>
     </div>

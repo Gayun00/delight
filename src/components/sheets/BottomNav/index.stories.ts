@@ -10,4 +10,8 @@ const meta: Meta<typeof Component> = {
 export default meta;
 type Story = StoryObj<typeof Component>;
 
-export const Primary: Story = {};
+export const Primary: Story = {
+  args: {
+    selectedMenu: "chart",
+  },
+};

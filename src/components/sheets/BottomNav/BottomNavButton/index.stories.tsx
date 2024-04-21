@@ -10,13 +10,13 @@ const meta: Meta<typeof Component> = {
 export default meta;
 type Story = StoryObj<typeof Component>;
 
-export const Primary: Story = {
+export const IsNotSelected: Story = {
   args: {
     Icon: Chart,
   },
 };
 
-export const Secondary: Story = {
+export const IsSelected: Story = {
   args: {
     Icon: Chart,
     isSelected: true,
