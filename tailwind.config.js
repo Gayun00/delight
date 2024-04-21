@@ -1,4 +1,5 @@
 /** @type {import('tailwindcss').Config} */
+
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
@@ -6,6 +7,7 @@ export default {
       borderRadius: {
         lg: "20px",
         md: "8px",
+        sm: "4px",
       },
       fontSize: {
         "2xl": "24px",
