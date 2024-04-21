@@ -8,15 +8,21 @@ const queryKeys = {
 
 export const useHistoryQuery = ({
   type,
-  offset,
-  limit,
+  offset = 0,
+  limit = 0,
+  startDate = "",
+  endDate = "",
 }: {
   type: string;
-  offset: number;
-  limit: number;
+  offset?: number;
+  limit?: number;
+  startDate?: string;
+  endDate?: string;
 }) => {
   return useQuery({
     queryKey: queryKeys.list(type),
-    queryFn: () => getHistory({ type, offset, limit }),
+    queryFn: () => {
+      return getHistory({ type, offset, limit, startDate, endDate });
+    },
   });
 };

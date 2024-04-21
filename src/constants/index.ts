@@ -9,7 +9,7 @@ export const TRANSACTIONS_TYPE = {
 };
 
 export const DATE_RANGE = {
-  YEAR: "year",
+  WEEK: "week",
   MONTH: "month",
 };
 
