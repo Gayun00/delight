@@ -2,6 +2,7 @@ import BottomNav from "./components/sheets/BottomNav";
 import { useNavigate, useLocation } from "react-router-dom";
 import { Routes, Route } from "react-router-dom";
 import ChartPage from "./pages/ChartPage";
+import { useEffect } from "react";
 
 function App() {
   const navigate = useNavigate();
@@ -10,7 +11,12 @@ function App() {
   const goToPage = (page: string) => {
     navigate(page);
   };
-  // TODO: 다른 경로 처리
+
+  useEffect(() => {
+    if (location.pathname === "/") {
+      navigate("/chart");
+    }
+  });
   return (
     <div className="flex justify-center">
       <div className="w-[375px] h-screen">
