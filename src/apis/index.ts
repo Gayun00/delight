@@ -1,7 +1,9 @@
 import { request } from "@/utils/httpRequest";
+import { RecentTransactionsResponse } from "@/types/apis";
 
-export const getExampleRequest = () => {
-  return request.get({
-    path: "/example",
+export const getHistory = (type: string) => {
+  return request.get<unknown, RecentTransactionsResponse>({
+    path: "/history",
+    queryParams: { type },
   });
 };

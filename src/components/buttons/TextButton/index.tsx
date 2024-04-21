@@ -4,6 +4,7 @@ interface Props {
   children: ReactNode;
   variant?: "primary" | "secondary";
   buttonType?: "submit" | "button";
+  onClick:()=>void;
 }
 
 const styles = {
@@ -15,10 +16,11 @@ const TextButton = ({
   children,
   variant = "primary",
   buttonType = "button",
+  onClick,
   ...props
 }: Props) => {
   return (
-    <button {...props} type={buttonType} className={`${styles[variant]}`}>
+    <button onClick={onClick} {...props} type={buttonType} className={`${styles[variant]}`}>
       <p className="font-bold text-lg leading-lg">{children}</p>
     </button>
   );
