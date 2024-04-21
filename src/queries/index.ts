@@ -1,13 +1,14 @@
-import { getExampleRequest } from "@/apis";
+import { getHistory } from "@/apis";
 import { useQuery } from "@tanstack/react-query";
 
 const queryKeys = {
-  all: ["example"] as const,
+  all: ["history"] as const,
+  list: (type: string) => [...queryKeys.all, type] as const,
 };
 
-export const useExampleQuery = () => {
+export const useHistoryQuery = (type: string) => {
   return useQuery({
-    queryKey: queryKeys.all,
-    queryFn: async () => getExampleRequest,
+    queryKey: queryKeys.list(type),
+    queryFn: () => getHistory(type),
   });
 };
