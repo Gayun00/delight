@@ -10,7 +10,7 @@ function App() {
   const goToPage = (page: string) => {
     navigate(page);
   };
-
+  // TODO: 다른 경로 처리
   return (
     <div className="flex justify-center">
       <div className="w-[375px] h-screen">
