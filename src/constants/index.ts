@@ -7,3 +7,9 @@ export const TRANSACTIONS_TYPE = {
   EXPENSE: "expense",
   INCOME: "income",
 };
+
+
+export const COLORS = {
+  PURPLE_PRIMARY:"#363062",
+  GREEN_PRIMARY:"#5BDAA4"
+}
