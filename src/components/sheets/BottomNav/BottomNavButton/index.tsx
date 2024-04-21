@@ -5,7 +5,7 @@ interface Props {
   Icon: FunctionComponent<SVGProps<SVGSVGElement>>;
   isSelected: boolean;
   onClick: () => void;
-  buttonType: "submit" | "button";
+  buttonType?: "submit" | "button";
 }
 
 const BottomNavButton = ({

@@ -30,10 +30,11 @@ interface Props {
 
 const BottomNav = ({ onSelect, selectedMenu }: Props) => {
   return (
-    <div className="fixed bottom-0 flex w-full h-[67px]">
+    <div className="fixed bottom-0 flex w-full h-[67px] bg-white">
       <div className="flex px-[28px]">
         {list.map((item) => (
           <BottomNavButton
+            key={item.name}
             Icon={item.Icon}
             isSelected={selectedMenu === item.name}
             onClick={() => onSelect(item.name)}
