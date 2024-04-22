@@ -31,7 +31,6 @@ const Transactions = () => {
     <div className="flex flex-col space-y-[20px]">
       <div className="flex justify-between items-center">
         <Title>Transactions</Title>
-        {/* TODO: 새 알림 상태관리 로직 추가 */}
         <Alert />
       </div>
       <div defaultValue="tab1">

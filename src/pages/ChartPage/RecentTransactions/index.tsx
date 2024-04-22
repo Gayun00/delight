@@ -7,7 +7,7 @@ import LoadError from "@/components/fallbacks/LoadError";
 import RecentTransactionSkeleton from "@/components/fallbacks/RecentTransactionSkeleton";
 
 const RecentTransactionList = React.lazy(
-  () => import("@/pages/ChartPage/TransactionList")
+  () => import("@/pages/ChartPage/RecentTransactionList")
 );
 
 const list = [
