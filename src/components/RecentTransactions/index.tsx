@@ -4,6 +4,9 @@ import TextButton from "@/components/buttons/TextButton";
 import TransactionList from "@/components/lists/TransactionList";
 import { useHistoryQuery } from "@/queries";
 import { TRANSACTIONS_TYPE } from "@/constants";
+import SuspenseBoundary from "../SuspenseBoundary";
+import LoadError from "../fallbacks/LoadError";
+import RecentTransactionSkeleton from "../fallbacks/RecentTransactionSkeleton";
 
 const list = [
   {
@@ -22,11 +25,6 @@ const list = [
 
 const RecentTransactions = () => {
   const [type, setType] = useState(TRANSACTIONS_TYPE.ALL);
-  const { data } = useHistoryQuery({
-    type,
-    offset: 0,
-    limit: type === TRANSACTIONS_TYPE.ALL ? 20 : 10,
-  });
 
   const handleSelect = (type: string) => {
     setType(type);
@@ -48,14 +46,30 @@ const RecentTransactions = () => {
             ))}
           </div>
         </div>
-        <div className="h-[250px] overflow-y-scroll">
-          <TransactionList>
-            {data?.data?.map((item) => <TransactionList.Item {...item} />)}
-          </TransactionList>
-        </div>
+        <SuspenseBoundary
+          Fallback={RecentTransactionSkeleton}
+          ErrorFallback={LoadError}>
+          <RecentTransactionList type={type} />
+        </SuspenseBoundary>
       </div>
     </div>
   );
 };
 
 export default RecentTransactions;
+
+export const RecentTransactionList = ({ type }: { type: string }) => {
+  const { data } = useHistoryQuery({
+    type,
+    offset: 0,
+    limit: type === TRANSACTIONS_TYPE.ALL ? 20 : 10,
+  });
+
+  return (
+    <div className="h-[250px] overflow-y-scroll">
+      <TransactionList>
+        {data?.data?.map((item) => <TransactionList.Item {...item} />)}
+      </TransactionList>
+    </div>
+  );
+};
