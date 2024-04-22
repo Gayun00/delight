@@ -89,7 +89,7 @@ const ApexChart = ({ series1Data, series2Data, dates }: Props) => {
   };
 
   return (
-    <div>
+    <div className="relative">
       <div className="mt-[10px] mb-[47px] flex space-x-[20px]">
         <div className="flex items-center space-x-[9px]">
           <div className="mt-[3px] w-[32px] h-[5px] bg-purple-primary" />
@@ -110,6 +110,10 @@ const ApexChart = ({ series1Data, series2Data, dates }: Props) => {
         type="area"
         height={161}
       />
+      <div className="absolute bottom-[-4px] w-full flex justify-between text-gray-third text-lg leading-2xl">
+        <p>{dayjs(dates[0]).format("MMM DD")}</p>
+        <p>{dayjs(dates[dates.length - 1]).format("MMM DD")}</p>
+      </div>
     </div>
   );
 };
