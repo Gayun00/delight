@@ -1,33 +1,20 @@
-import dayjs from "dayjs";
 import { useHistoryQuery } from "@/queries";
-import { DATE_RANGE, TODAY } from "@/constants";
 import {
-  calculateDatesAWeekAgo,
-  calculateDatesAMonthAgo,
   generateDateArray,
   filterAndSumByDateRange,
 } from "@/utils/convertFormat";
 import AreaChart from "@/components/charts/AreaChart";
 
-const Chart = ({ type }: { type: string }) => {
-  // 차트 데이터 표시를 위한 임의의 현재시점 날짜 지정
-  const today = dayjs(TODAY).format("YYYY-MM-DD");
+interface Props {
+  type: string;
+  startDate: string;
+  endDate: string;
+}
 
-  const handleDates = (type: string) => {
-    let endDate = "";
-    if (type === DATE_RANGE.WEEK) {
-      endDate = calculateDatesAWeekAgo(today);
-    }
-    if (type === DATE_RANGE.MONTH) {
-      endDate = calculateDatesAMonthAgo(today);
-    }
+const Chart = ({ type, startDate, endDate }: Props) => {
+  const { data } = useHistoryQuery({ type, startDate, endDate });
 
-    return endDate;
-  };
-  const endDate = handleDates(type);
-  const { data } = useHistoryQuery({ type, startDate: today, endDate });
-
-  const datesArray = generateDateArray(endDate, today);
+  const datesArray = generateDateArray(endDate, startDate);
   const { expense, income } = filterAndSumByDateRange(
     data?.data || [],
     datesArray
