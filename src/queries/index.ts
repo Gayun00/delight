@@ -1,5 +1,5 @@
 import { getHistory } from "@/apis";
-import { useQuery } from "@tanstack/react-query";
+import { useSuspenseQuery } from "@tanstack/react-query";
 
 interface Params {
   type: string;
@@ -21,7 +21,7 @@ export const useHistoryQuery = ({
   startDate = "",
   endDate = "",
 }: Params) => {
-  return useQuery({
+  return useSuspenseQuery({
     queryKey: queryKeys.list({ type, offset, limit, startDate, endDate }),
     queryFn: () => {
       return getHistory({ type, offset, limit, startDate, endDate });
