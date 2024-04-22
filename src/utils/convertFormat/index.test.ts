@@ -10,6 +10,7 @@ import {
   calculateDatesAWeekAgo,
   calculateDatesAMonthAgo,
   filterDatesInDateRange,
+  filterByDateRange,
 } from ".";
 
 const mockData = [
@@ -184,5 +185,45 @@ describe("filterDatesInDateRange 테스트", () => {
         type: "transfer",
       },
     ]);
+  });
+});
+
+describe("filterDatesInDateRange 테스트", () => {
+  it("입력한 날짜에 해당하는 데이터 필터링", () => {
+    const result = filterByDateRange(
+      [
+        {
+          amount: "4573.84",
+          name: "Mr. Chester Kshlerin",
+          timestamp: "2023-06-30T00:14:00Z",
+          type: "transfer",
+        },
+        {
+          amount: "4573.84",
+          name: "Mr. Chester Kshlerin",
+          timestamp: "2023-07-01T00:15:00Z",
+          type: "transfer",
+        },
+        {
+          amount: "-750.78",
+          name: "Prince Danial Dickens",
+          timestamp: "2023-07-01T00:11:00Z",
+          type: "transfer",
+        },
+        {
+          amount: "-750.78",
+          name: "Prince Danial Dickens",
+          timestamp: "2023-07-03T00:12:00Z",
+          type: "transfer",
+        },
+      ],
+      "2023-07-01",
+      "2023-07-02"
+    );
+    expect(result).toEqual({
+      expense: [0, -750.78],
+      income: [4573.84, 0],
+      timestamps: ["2023-07-01T00:15:00Z", "2023-07-01T00:11:00Z"],
+    });
   });
 });

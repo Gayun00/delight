@@ -1,3 +1,4 @@
+import dayjs from "dayjs";
 import ReactApexChart from "react-apexcharts";
 import { COLORS } from "@/constants";
 
@@ -5,6 +6,19 @@ interface Props {
   series1Data: number[];
   series2Data: number[];
   dates: string[];
+}
+
+interface TooltipCustomProps {
+  seriesIndex: number;
+  dataPointIndex: number;
+  w: {
+    config: {
+      series: { data: string[] }[];
+      xaxis: {
+        categories: string[];
+      };
+    };
+  };
 }
 
 const ApexChart = ({ series1Data, series2Data, dates }: Props) => {
@@ -23,7 +37,7 @@ const ApexChart = ({ series1Data, series2Data, dates }: Props) => {
 
   const options = {
     chart: {
-      height: 350,
+      height: 319,
       type: "area",
     },
     dataLabels: {
@@ -49,6 +63,21 @@ const ApexChart = ({ series1Data, series2Data, dates }: Props) => {
     tooltip: {
       x: {
         format: "dd/MM/yy HH:mm",
+      },
+      custom: function ({
+        seriesIndex,
+        dataPointIndex,
+        w,
+      }: TooltipCustomProps) {
+        const income = seriesIndex === 0;
+        const date = w.config.xaxis.categories[dataPointIndex];
+        const formattedDate = dayjs(date).format("MMM DD, HH:mm");
+        return (
+          `<div class="${income ? "bg-purple-primary" : "bg-green-primary"} h-[56px] text-white p-[8px] rounded-md border-none">` +
+          `<p class="mb-[1px] font-bold text-md leading-sm">${income ? "+" : "-"}$${w.config.series[seriesIndex].data[dataPointIndex]}</p>` +
+          `<p class="text-sm leading-xs font-medium">${formattedDate}</p>+
+          </div>`
+        );
       },
     },
   };

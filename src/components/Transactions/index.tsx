@@ -25,7 +25,7 @@ const list = [
 ];
 
 const Transactions = () => {
-  const today = dayjs("2024-07-30").format("YYYY-MM-DD");
+  const today = dayjs("2024-06-30").format("YYYY-MM-DD");
 
   const handleDates = (type: string) => {
     let endDate = "";

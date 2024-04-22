@@ -108,3 +108,37 @@ export const filterDatesInDateRange = (
     );
   });
 };
+
+export const filterByDateRange = (
+  data: TransactionData[],
+  startDate: string,
+  endDate: string
+) => {
+  const startDateObj = dayjs(startDate);
+  const endDateObj = dayjs(endDate);
+
+  const filteredData = data.filter((transaction) => {
+    const transactionDate = dayjs(transaction.timestamp);
+    return (
+      transactionDate.isSameOrAfter(startDateObj) &&
+      transactionDate.isSameOrBefore(endDateObj)
+    );
+  });
+
+  const timestamps = filteredData.map((transaction) => transaction.timestamp);
+
+  const income: number[] = new Array<number>(timestamps.length).fill(0);
+  const expense: number[] = new Array<number>(timestamps.length).fill(0);
+
+  filteredData.forEach((transaction, index) => {
+    const amount = parseFloat(transaction.amount);
+
+    if (amount >= 0) {
+      income[index] = amount;
+    } else {
+      expense[index] = amount;
+    }
+  });
+
+  return { timestamps, income, expense };
+};
