@@ -1,21 +1,13 @@
 import React, { useState } from "react";
-import dayjs from "dayjs";
 import Title from "@/components/titles/Title";
 import AlertButton from "@/components/buttons/AlertButton";
 import Button from "@/components/buttons/Button";
-import { useHistoryQuery } from "@/queries";
 import { DATE_RANGE } from "@/constants";
-import {
-  calculateDatesAWeekAgo,
-  calculateDatesAMonthAgo,
-  generateDateArray,
-  filterAndSumByDateRange,
-} from "@/utils/convertFormat";
 import LoadError from "@/components/fallbacks/LoadError";
 import SuspenseBoundary from "@/components/SuspenseBoundary";
 import TransactionChartSkeleton from "@/components/fallbacks/TransactionChartSkeleton";
 
-const AreaChart = React.lazy(() => import("@/components/charts/AreaChart"));
+const Chart = React.lazy(() => import("@/pages/ChartPage/Chart"));
 
 const list = [
   {
@@ -69,31 +61,3 @@ const Transactions = () => {
 };
 
 export default Transactions;
-
-export const Chart = ({ type }: { type: string }) => {
-  // 차트 데이터 표시를 위한 임의의 현재시점 날짜 지정
-  const today = dayjs("2024-06-30").format("YYYY-MM-DD");
-
-  const handleDates = (type: string) => {
-    let endDate = "";
-    if (type === DATE_RANGE.WEEK) {
-      endDate = calculateDatesAWeekAgo(today);
-    }
-    if (type === DATE_RANGE.MONTH) {
-      endDate = calculateDatesAMonthAgo(today);
-    }
-
-    return endDate;
-  };
-  const endDate = handleDates(type);
-  const { data } = useHistoryQuery({ type, startDate: today, endDate });
-
-  const datesArray = generateDateArray(endDate, today);
-  const { expense, income } = filterAndSumByDateRange(
-    data?.data || [],
-    datesArray
-  );
-  return (
-    <AreaChart series1Data={expense} series2Data={income} dates={datesArray} />
-  );
-};

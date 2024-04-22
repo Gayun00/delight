@@ -1,12 +1,14 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import SubTitle from "@/components/titles/SubTitle";
 import TextButton from "@/components/buttons/TextButton";
-import TransactionList from "@/components/lists/TransactionList";
-import { useHistoryQuery } from "@/queries";
 import { TRANSACTIONS_TYPE } from "@/constants";
 import SuspenseBoundary from "@/components/SuspenseBoundary";
 import LoadError from "@/components/fallbacks/LoadError";
 import RecentTransactionSkeleton from "@/components/fallbacks/RecentTransactionSkeleton";
+
+const RecentTransactionList = React.lazy(
+  () => import("@/pages/ChartPage/TransactionList")
+);
 
 const list = [
   {
@@ -57,21 +59,3 @@ const RecentTransactions = () => {
 };
 
 export default RecentTransactions;
-
-export const RecentTransactionList = ({ type }: { type: string }) => {
-  const { data } = useHistoryQuery({
-    type,
-    offset: 0,
-    limit: type === TRANSACTIONS_TYPE.ALL ? 20 : 10,
-  });
-
-  return (
-    <div className="h-screen overflow-y-scroll">
-      <TransactionList>
-        {data?.data?.map((item) => (
-          <TransactionList.Item key={item.timestamp} {...item} />
-        ))}
-      </TransactionList>
-    </div>
-  );
-};
