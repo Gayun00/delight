@@ -48,7 +48,7 @@ const RecentTransactions = () => {
             ))}
           </div>
         </div>
-        <div className="h-[550px] overflow-y-scroll">
+        <div className="h-[250px] overflow-y-scroll">
           <TransactionList>
             {data?.data?.map((item) => <TransactionList.Item {...item} />)}
           </TransactionList>

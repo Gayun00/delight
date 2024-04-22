@@ -37,6 +37,9 @@ const ApexChart = ({ series1Data, series2Data, dates }: Props) => {
 
   const options = {
     chart: {
+      toolbar: {
+        show: false,
+      },
       height: 319,
       type: "area",
     },
