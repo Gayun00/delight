@@ -68,7 +68,9 @@ export const RecentTransactionList = ({ type }: { type: string }) => {
   return (
     <div className="h-[250px] overflow-y-scroll">
       <TransactionList>
-        {data?.data?.map((item) => <TransactionList.Item {...item} />)}
+        {data?.data?.map((item) => (
+          <TransactionList.Item key={item.timestamp} {...item} />
+        ))}
       </TransactionList>
     </div>
   );
