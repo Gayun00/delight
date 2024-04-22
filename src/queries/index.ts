@@ -1,14 +1,30 @@
 import { getHistory } from "@/apis";
 import { useQuery } from "@tanstack/react-query";
 
+interface Params {
+  type: string;
+  offset?: number;
+  limit?: number;
+  startDate?: string;
+  endDate?: string;
+}
+
 const queryKeys = {
   all: ["history"] as const,
-  list: (type: string) => [...queryKeys.all, type] as const,
+  list: (params: Params) => [...queryKeys.all, params] as const,
 };
 
-export const useHistoryQuery = (type: string) => {
+export const useHistoryQuery = ({
+  type,
+  offset = 0,
+  limit = 0,
+  startDate = "",
+  endDate = "",
+}: Params) => {
   return useQuery({
-    queryKey: queryKeys.list(type),
-    queryFn: () => getHistory(type),
+    queryKey: queryKeys.list({ type, offset, limit, startDate, endDate }),
+    queryFn: () => {
+      return getHistory({ type, offset, limit, startDate, endDate });
+    },
   });
 };

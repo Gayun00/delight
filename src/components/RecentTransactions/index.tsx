@@ -22,7 +22,11 @@ const list = [
 
 const RecentTransactions = () => {
   const [type, setType] = useState(TRANSACTIONS_TYPE.ALL);
-  const { data } = useHistoryQuery(type);
+  const { data } = useHistoryQuery({
+    type,
+    offset: 0,
+    limit: type === TRANSACTIONS_TYPE.ALL ? 20 : 10,
+  });
 
   const handleSelect = (type: string) => {
     setType(type);
@@ -44,7 +48,7 @@ const RecentTransactions = () => {
             ))}
           </div>
         </div>
-        <div className="h-[550px] overflow-y-scroll">
+        <div className="h-[250px] overflow-y-scroll">
           <TransactionList>
             {data?.data?.map((item) => <TransactionList.Item {...item} />)}
           </TransactionList>
