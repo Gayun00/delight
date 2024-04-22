@@ -1,9 +1,9 @@
 import BottomNav from "./components/sheets/BottomNav";
 import { useNavigate, useLocation } from "react-router-dom";
 import { Routes, Route } from "react-router-dom";
-import ChartPage from "./pages/ChartPage";
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 
+const ChartPage = React.lazy(() => import("./pages/ChartPage"));
 function App() {
   const navigate = useNavigate();
   const location = useLocation();
