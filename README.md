@@ -1,4 +1,5 @@
 ## 프로젝트
+<img width="513" alt="스크린샷 2024-04-22 오후 5 59 13" src="https://github.com/Gayun00/delight/assets/67543454/026250c9-3ef7-40cc-b4b6-635827b14e29">
 
 ### ✅ Command
 로컬 서버 실행: `yarn dev`
@@ -10,7 +11,7 @@
 ### ✅ 기능 구현
 |초기 로딩 화면|탭 젼환|
 |--|--|
-|![2024-04-224 02 56-ezgif com-video-to-gif-converter](https://github.com/Gayun00/delight/assets/67543454/7c6f02e1-3be0-4e43-8b19-5b20c06644ca)|![2024-04-224 03 11-ezgif com-video-to-gif-converter](https://github.com/Gayun00/delight/assets/67543454/dd8abf73-455f-4353-8a25-67f02bd0913a)|
+|<img width="292" alt="스크린샷 2024-04-22 오후 6 05 18" src="https://github.com/Gayun00/delight/assets/67543454/d9c12f1a-7057-480e-85b9-cfe9d61a1dc8">|![2024-04-226 00 35-ezgif com-crop](https://github.com/Gayun00/delight/assets/67543454/6a26367b-21a8-4e3a-953a-c6abf9efe0f0)|
 
 <br>
 
@@ -35,7 +36,7 @@
 - **Suspense와 ErrorBoundary, QueryErrorResetBoundary를 사용한 선언적인 비동기 로직 관리**
 
 - **코드스플리팅 및 Skeleton UI를 사용해 초기 로드 단계 사용자 경험 고려**
-  
+
 - **재사용성과 확장성이 높은 컴포넌트 구조 설계**
   - Storybook을 활용한 컴포넌트 문서화
   - <img width="577" alt="스크린샷 2024-04-22 오후 5 01 32" src="https://github.com/Gayun00/delight/assets/67543454/eb8b664b-f241-4a64-bd6a-0af86dab61f6">
