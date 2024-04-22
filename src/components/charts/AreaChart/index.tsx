@@ -60,6 +60,9 @@ const ApexChart = ({ series1Data, series2Data, dates }: Props) => {
       type: "datetime",
       categories: dates,
     },
+    legend: {
+      show: false,
+    },
     tooltip: {
       x: {
         format: "dd/MM/yy HH:mm",
@@ -84,15 +87,26 @@ const ApexChart = ({ series1Data, series2Data, dates }: Props) => {
 
   return (
     <div>
-      <div id="chart">
-        <ReactApexChart
-          options={options}
-          series={series}
-          type="area"
-          height={350}
-        />
+      <div className="mt-[10px] mb-[47px] flex space-x-[20px]">
+        <div className="flex items-center space-x-[9px]">
+          <div className="mt-[3px] w-[32px] h-[5px] bg-purple-primary" />
+          <p className="font-medium text-sm leading-md text-gray-secondary">
+            Income
+          </p>
+        </div>
+        <div className="flex items-center space-x-[9px]">
+          <div className="mt-[3px] w-[32px] h-[5px] bg-green-primary" />
+          <p className="font-medium text-sm leading-md text-gray-secondary">
+            Expense
+          </p>
+        </div>
       </div>
-      <div id="html-dist"></div>
+      <ReactApexChart
+        options={options}
+        series={series}
+        type="area"
+        height={161}
+      />
     </div>
   );
 };
