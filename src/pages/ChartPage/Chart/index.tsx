@@ -1,6 +1,6 @@
 import dayjs from "dayjs";
 import { useHistoryQuery } from "@/queries";
-import { DATE_RANGE } from "@/constants";
+import { DATE_RANGE, TODAY } from "@/constants";
 import {
   calculateDatesAWeekAgo,
   calculateDatesAMonthAgo,
@@ -11,7 +11,7 @@ import AreaChart from "@/components/charts/AreaChart";
 
 const Chart = ({ type }: { type: string }) => {
   // 차트 데이터 표시를 위한 임의의 현재시점 날짜 지정
-  const today = dayjs("2024-06-30").format("YYYY-MM-DD");
+  const today = dayjs(TODAY).format("YYYY-MM-DD");
 
   const handleDates = (type: string) => {
     let endDate = "";

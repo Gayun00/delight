@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import Title from "@/components/titles/Title";
-import AlertButton from "@/components/buttons/AlertButton";
 import Button from "@/components/buttons/Button";
 import { DATE_RANGE } from "@/constants";
 import LoadError from "@/components/fallbacks/LoadError";
 import SuspenseBoundary from "@/components/SuspenseBoundary";
 import TransactionChartSkeleton from "@/components/fallbacks/TransactionChartSkeleton";
+import Alert from "@/pages/ChartPage/Alert";
 
 const Chart = React.lazy(() => import("@/pages/ChartPage/Chart"));
 
@@ -32,7 +32,7 @@ const Transactions = () => {
       <div className="flex justify-between items-center">
         <Title>Transactions</Title>
         {/* TODO: 새 알림 상태관리 로직 추가 */}
-        <AlertButton hasNew />
+        <Alert />
       </div>
       <div defaultValue="tab1">
         <div className="flex justify-between items-center">
