@@ -26,5 +26,6 @@ export const useHistoryQuery = ({
     queryFn: () => {
       return getHistory({ type, offset, limit, startDate, endDate });
     },
+    staleTime: 1000 * 5,
   });
 };

@@ -11,9 +11,9 @@ import {
   generateDateArray,
   filterAndSumByDateRange,
 } from "@/utils/convertFormat";
-import LoadError from "../fallbacks/LoadError";
-import SuspenseBoundary from "../SuspenseBoundary";
-import TransactionChartSkeleton from "../fallbacks/TransactionChartSkeleton";
+import LoadError from "@/components/fallbacks/LoadError";
+import SuspenseBoundary from "@/components/SuspenseBoundary";
+import TransactionChartSkeleton from "@/components/fallbacks/TransactionChartSkeleton";
 
 const AreaChart = React.lazy(() => import("@/components/charts/AreaChart"));
 

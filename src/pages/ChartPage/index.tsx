@@ -2,9 +2,9 @@ import PageLayout from "@/components/layouts/PageLayout";
 import React from "react";
 
 const RecentTransactions = React.lazy(
-  () => import("@/components/RecentTransactions")
+  () => import("@/pages/ChartPage/RecentTransactions")
 );
-const Transactions = React.lazy(() => import("@/components/Transactions"));
+const Transactions = React.lazy(() => import("@/pages/ChartPage/Transactions"));
 
 const ChartPage = () => {
   return (

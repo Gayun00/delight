@@ -4,9 +4,9 @@ import TextButton from "@/components/buttons/TextButton";
 import TransactionList from "@/components/lists/TransactionList";
 import { useHistoryQuery } from "@/queries";
 import { TRANSACTIONS_TYPE } from "@/constants";
-import SuspenseBoundary from "../SuspenseBoundary";
-import LoadError from "../fallbacks/LoadError";
-import RecentTransactionSkeleton from "../fallbacks/RecentTransactionSkeleton";
+import SuspenseBoundary from "@/components/SuspenseBoundary";
+import LoadError from "@/components/fallbacks/LoadError";
+import RecentTransactionSkeleton from "@/components/fallbacks/RecentTransactionSkeleton";
 
 const list = [
   {
@@ -66,7 +66,7 @@ export const RecentTransactionList = ({ type }: { type: string }) => {
   });
 
   return (
-    <div className="h-[250px] overflow-y-scroll">
+    <div className="h-screen overflow-y-scroll">
       <TransactionList>
         {data?.data?.map((item) => (
           <TransactionList.Item key={item.timestamp} {...item} />
